@@ -1,5 +1,7 @@
 @0xabfde24161b46b56;
 
+#This is mostly copied from the capn'proto json protocol file. The RpcArray struct is from me.
+
 $import "/capnp/c++.capnp".namespace("gen::json");
 using Json = import "/capnp/compat/json.capnp";
 
