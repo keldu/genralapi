@@ -1,0 +1,12 @@
+*.capnp.cpp
+*.capnp.h
+*.o
+*.so
+*.os
+*.a
+*.pyc
+*.c++
+.sconsign.dblite
+bin/
+build/
+objects/

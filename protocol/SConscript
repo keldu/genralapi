@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+Import('env')
+
+env.Append(BUILDERS =
+	{'CapnP' : Builder(action = 'capnp compile -oc++ $SOURCE',
+		suffix='.capnp.c++', src_suffix='.capnp')})
+
+env.CapnP('JsonRpc.capnp')
+
+env.Append(BUILDERS =
+	{'CapnPMv' : Builder(action = 'cp $SOURCE $TARGET',
+		suffix='.capnp.cpp', src_suffix='.capnp.c++')})
+
+env.CapnPMv('JsonRpc.capnp.c++')
+
+raw_src_list = [
+            'JsonRpc.capnp.cpp'
+        ]
+
+env.static_obj_list = []
+env.shared_obj_list = []
+
+env.add_source_files(env.static_obj_list, raw_src_list)
+env.add_source_files(env.shared_obj_list, raw_src_list,shared=True)

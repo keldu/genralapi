@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+Import('env')
+
+raw_src_list = [
+            'JsonRpcAdapter.cpp','JsonRpcService.cpp','Bouncer.cpp', 
+            'Config.cpp', 'JsonRpcCodecHandler.cpp'
+        ]
+
+env.add_source_files(env.static_obj_list, raw_src_list)
+env.add_source_files(env.shared_obj_list, raw_src_list,shared=True)
