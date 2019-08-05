@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 
+import os
+import os.path
+
+
 Import('env')
 
 env_core = env.Clone()
 
-env.core_sources = [
-            'JsonRpcAdapter.cpp','JsonRpcService.cpp','Bouncer.cpp', 
-            'JsonRpcCodecHandler.cpp'
-        ]
+dir_path = Dir('.').abspath
+env.core_sources = sorted(glob.glob(dir_path + "/" + "*.cpp"))
 
-#lib_static = env_util.add_library("genral-util", env.util_sources)
-#lib_shared = env_util.add_library("genral-util", env.util_sources,shared=True)
+env.core_sources.append(env.protocol_sources);
 
 env_core.StaticLibrary('genral-api', env.core_sources )
 env_core.SharedLibrary('genral-api', env.core_sources )

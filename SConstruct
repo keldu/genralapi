@@ -16,6 +16,3 @@ SConscript('protocol/SConscript')
 
 SConscript('source/SConscript')
 SConscript('util/SConscript')
-
-env.StaticLibrary('#lib/genrest', env.static_obj_list )
-env.SharedLibrary('#lib/genrest', env.shared_obj_list )
