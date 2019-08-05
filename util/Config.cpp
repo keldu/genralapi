@@ -1,6 +1,6 @@
 #include "Config.h"
 
-#include <cpptoml.h>
+#include <thirdparty/cpptoml/include/cpptoml.h>
 
 namespace gen{
 	std::unique_ptr<Config> Config::parse(const std::string& path){

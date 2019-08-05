@@ -2,10 +2,15 @@
 
 Import('env')
 
-raw_src_list = [
+env_core = env.Clone()
+
+env.core_sources = [
             'JsonRpcAdapter.cpp','JsonRpcService.cpp','Bouncer.cpp', 
-            'Config.cpp', 'JsonRpcCodecHandler.cpp'
+            'JsonRpcCodecHandler.cpp'
         ]
 
-env.add_source_files(env.static_obj_list, raw_src_list)
-env.add_source_files(env.shared_obj_list, raw_src_list,shared=True)
+#lib_static = env_util.add_library("genral-util", env.util_sources)
+#lib_shared = env_util.add_library("genral-util", env.util_sources,shared=True)
+
+env_core.StaticLibrary('genral-api', env.core_sources )
+env_core.SharedLibrary('genral-api', env.core_sources )

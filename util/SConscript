@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+Import('env')
+
+env_util = env.Clone()
+
+env.util_sources = [
+            'Config.cpp'
+        ]
+
+#lib_static = env_util.add_library("genral-util", env.util_sources)
+#lib_shared = env_util.add_library("genral-util", env.util_sources,shared=True)
+
+env_util.StaticLibrary('genral-util', env.util_sources )
+env_util.SharedLibrary('genral-util', env.util_sources )
