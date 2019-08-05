@@ -1,7 +1,7 @@
 #pragma once
 
 #include <capnp/compat/json.h>
-#include "JsonRpc.capnp.h"
+#include "protocol/JsonRpc.capnp.h"
 
 namespace gen{
 	class RpcArrayCodecHandler : public capnp::JsonCodec::Handler<gen::json::RpcArray>{

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JsonRpc.capnp.h"
+#include "protocol/JsonRpc.capnp.h"
 #include "IRequestAdapter.h"
 
 #include <capnp/compat/json.h>

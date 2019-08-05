@@ -4,7 +4,7 @@
 #include <kj/string.h>
 #include <kj/map.h>
 #include <capnp/compat/json.h>
-#include "JsonRpc.capnp.h"
+#include "protocol/JsonRpc.capnp.h"
 #include <unordered_map>
 #include <vector>
 

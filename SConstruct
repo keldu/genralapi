@@ -4,7 +4,7 @@
 from thirdparty import methods
 
 
-env = Environment(parse_flags='-I# -I#protocol')
+env = Environment(parse_flags='-I#')
 #env=Environment(parse_flags='-I#thirdparty -I#protocol',CXXFLAGS=['-std=c++17','-Wall','-Wextra','-Werror'],LIBS=[''])
 
 env.__class__.add_source_files = methods.add_source_files
