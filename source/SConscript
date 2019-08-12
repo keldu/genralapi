@@ -11,8 +11,9 @@ env_core = env.Clone()
 
 dir_path = Dir('.').abspath
 env.core_sources = sorted(glob.glob(dir_path + "/" + "*.cpp"))
+env.core_header = sorted(glob.glob(dir_path + "/*.h"))
 
 env.core_sources.append(env.protocol_sources);
 
-env_core.StaticLibrary('genral-api', env.core_sources )
-env_core.SharedLibrary('genral-api', env.core_sources )
+env.core_static_lib = env_core.StaticLibrary('genral-api', env.core_sources )
+env.core_shared_lib = env_core.SharedLibrary('genral-api', env.core_sources )
