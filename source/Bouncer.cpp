@@ -16,4 +16,12 @@ namespace gen{
 	bool SimpleSession::isAuthorized(){
 		return is_auth;
 	}
+
+	void AllowAllSession::authorize(const std::string& auth_token){
+
+	}
+
+	bool AllowAllSession::isAuthorized(){
+		return true;
+	}
 }

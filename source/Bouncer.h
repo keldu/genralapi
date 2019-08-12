@@ -24,13 +24,21 @@ namespace gen{
 	};
 
 	class SimpleSession final : public IBouncer{
-	public:
-		SimpleSession(const std::string& token);
-      
-		void authorize(const std::string& auth_token);
-		bool isAuthorized();
 	private:
 		std::string token;
 		bool is_auth;
+	public:
+		SimpleSession(const std::string& token);
+      
+		void authorize(const std::string& auth_token) override;
+		bool isAuthorized() override;
+	};
+
+	class AllowAllSession final : public IBouncer {
+	private:
+		void authorize(const std::string& auth_token) override;
+		bool isAuthorized() override;
+	public:
+		AllowAllSession() = default;
 	};
 }
