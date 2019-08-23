@@ -12,7 +12,7 @@ namespace gen{
 	class JsonRpcAdapter final : public kj::TaskSet::ErrorHandler, public IRequestAdapter{
 	public:
 		JsonRpcAdapter(capnp::JsonCodec& cCodec, capnp::DynamicCapability::Client cInterface);
-		~JsonRpcAdapter()throw(){};
+		~JsonRpcAdapter() noexcept {};
 		
 		kj::Promise<kj::String> interpret(kj::String request) override;
 	private:
