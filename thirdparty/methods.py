@@ -26,7 +26,7 @@ import re
 import glob
 import string
 import subprocess
-from compat import iteritems, isbasestring, decode_utf8
+from .compat import iteritems, isbasestring, decode_utf8
 
 
 def add_source_files(self, sources, filetype, lib_env=None, shared=False):

@@ -204,10 +204,9 @@ namespace gen{
 				codec->decode(request_reader.getParams(), request);
 			})){
 				kj::Maybe<capnp::JsonValue::Reader> id;
-				if (request_reader.hasId())
-				{
+				if (request_reader.hasId()){
 					id = request_reader.getId();
-			}
+				}
 				return kj::Promise<capnp::Orphan<gen::json::RpcMessage>>{writeError(response_builder, id, static_cast<int>(JsonErrorCode::INVALID_PARAMS), 
 					kj::str("Type Error in method params: ", exception->getDescription()))};
 			}

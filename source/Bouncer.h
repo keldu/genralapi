@@ -21,6 +21,7 @@ namespace gen{
 		virtual ~IAccess() = default;
 
 		virtual uint64_t getUid() = 0;
+		virtual uint64_t getPrivilegeLevel() = 0;
 	};
 
 	class SimpleSession final : public IBouncer{
@@ -35,10 +36,27 @@ namespace gen{
 	};
 
 	class AllowAllSession final : public IBouncer {
-	private:
+	public:
 		void authorize(const std::string& auth_token) override;
 		bool isAuthorized() override;
-	public:
 		AllowAllSession() = default;
+	};
+
+	/*
+	 * Basic Class to allow login with basic auth and additional Authentication Header stuff
+	 * Have to extend with SQL Interface in source. Or I just use capnproto files and load them.
+	 * Which is kinda inefficient.
+	 */
+	class TokenSessionWithAccess final : public IBouncer, public IAccess {
+	private:
+		uint64_t uid;
+	public:
+		TokenSessionWithAccess();
+
+		void authorize(const std::string& auth_token) override;
+		bool isAuthorized() override;
+
+		uint64_t getUid() override;
+		uint64_t getPrivilegeLevel() override;
 	};
 }
