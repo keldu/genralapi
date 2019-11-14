@@ -32,6 +32,7 @@ namespace gen{
         	return stream->write(message.begin(),message.size()).attach(kj::mv(message));
         }
         
+		try {
 		return request_body.readAllText().then([&](kj::String message){
 			/*auto stream = response.send(200, "OK", response_headers);
 			auto test_message = kj::str("This is a test");
@@ -45,6 +46,9 @@ namespace gen{
 				return write_promise;
 			});
 		});
+		}catch(std::exception& e){
+			return kj::READY_NOW;
+		}
 	}
 
 	JsonRpcMultiService::JsonRpcMultiService(kj::TreeMap<kj::String,JsonRpcMultiService::AdapterBouncerPair>&& map, const kj::HttpHeaderTable& header_table):
